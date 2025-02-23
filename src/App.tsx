@@ -1,11 +1,13 @@
 import Providers from './utils/Providers';
 
-import { Header } from './components';
+import Routers from './Routers';
+// import SendData from './components/PostForm';
 
 function App() {
   return (
     <Providers>
-      <Header />
+      <Routers />
+      {/* <SendData /> */}
     </Providers>
   );
 }
