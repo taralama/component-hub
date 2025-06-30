@@ -1,4 +1,5 @@
-import React, { SetStateAction } from 'react';
+import React, { SetStateAction, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({
   open,
@@ -7,15 +8,83 @@ const Sidebar = ({
   open: boolean;
   setOpen: React.Dispatch<SetStateAction<boolean>>;
 }) => {
-  console.log(open);
+  // console.log(open);
+
+  const componentsList = [
+    {
+      label: 'Accordion',
+      link: '/accordion',
+    },
+    {
+      label: 'Get-method',
+      link: '/gets',
+    },
+    {
+      label: 'Post-method',
+      link: '/posts',
+    },
+    {
+      label: 'Dropdown',
+      link: '/dropdown',
+    },
+    {
+      label: 'Input',
+      link: '/input',
+    },
+    {
+      label: 'Dynamic Form',
+      link: 'dynamic-form',
+    },
+    {
+      label: 'Switch',
+      link: 'switch',
+    },
+  ];
+
+  const [componentSearchName, setComponentSearchName] = useState('');
+  // console.log(componentSearchName)
+
+  const filteredComponent = componentsList.filter(({ label }) =>
+    label.toLowerCase().includes(componentSearchName),
+  );
 
   return (
     <div
-      className={`bg-blue-500 h-screen top-0 ${
-        open ? 'max-w-60' : 'max-w-0  opacity-45'
-      }  duration-500 `}
+      className={`bg-blue-500 border-none h-screen overflow-hidden transition-all duration-500`}
+      style={{
+        width: open ? '300px' : '0px', // Controls sidebar width
+      }}
     >
-      <button onClick={() => setOpen((prev) => !prev)}>close</button>
+      <div className=" w-full">
+        <span className="flex justify-end">
+          <button
+            className="p-2 text-white bg-red-300 rounded-full w-10"
+            onClick={() => setOpen((prev) => !prev)}
+          >
+            X
+          </button>
+        </span>
+
+        <h1 className="w-full font-bold py-2 text-center text px-10">
+          Navbar Content
+        </h1>
+        <input
+          type="text"
+          className=" bg-white rounded "
+          placeholder="Search Components"
+          onChange={(e) => setComponentSearchName(e.target.value)}
+        />
+
+        <ul className="mt-5">
+          {filteredComponent.map(({ label, link }, index) => (
+            <li key={label} className=" text-nowrap py-2">
+              <Link className="hover:underline" to={link}>
+                {index + 1}. {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

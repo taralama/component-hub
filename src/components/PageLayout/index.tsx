@@ -7,11 +7,15 @@ const Layout = () => {
   const [open, setOpen] = useState<boolean>(true);
 
   return (
-    <div className="relative">
+    <>
+      <div className="flex">
+        <Sidebar open={open} setOpen={setOpen} />
+        <div className=" w-full">
       <Navbar setOpen={setOpen} />
-      <Outlet />
-      <Sidebar open={open} setOpen={setOpen} />
-    </div>
+          <Outlet />
+        </div>
+      </div>
+    </>
   );
 };
 
