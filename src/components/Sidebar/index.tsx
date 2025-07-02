@@ -39,6 +39,10 @@ const Sidebar = ({
       label: 'Switch',
       link: 'switch',
     },
+    {
+      label: 'Hooks Example',
+      link: '/hooks',
+    },
   ];
 
   const [componentSearchName, setComponentSearchName] = useState('');

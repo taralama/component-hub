@@ -4,6 +4,7 @@ import Home from '../Pages/Home';
 import SendData from '../components/PostForm';
 import { DynamicFormInput } from '../components';
 import Switch from '../components/Switch';
+import Hooks from '../components/hooks';
 
 const Routers = () => {
   return (
@@ -12,6 +13,7 @@ const Routers = () => {
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<SendData />} />
         <Route path="/dynamic-form" element={<DynamicFormInput />} />
+        <Route path="/hooks" element={<Hooks />} />
         <Route path="/switch" element={<Switch />} />
         <Route path="*" element={<h1>not found</h1>} />
       </Route>
