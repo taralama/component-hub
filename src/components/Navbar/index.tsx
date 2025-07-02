@@ -1,3 +1,5 @@
+import { HamburgerIcon } from '../../assets/icons';
+
 const Navbar = ({
   setOpen,
 }: {
@@ -9,13 +11,7 @@ const Navbar = ({
         className="hover:cursor-pointer"
         onClick={() => setOpen((prev) => !prev)}
       >
-        Menu
-      </button>
-      <button
-        className="hover:cursor-pointer"
-        onClick={() => setOpen((prev) => !prev)}
-      >
-        Menu
+        <HamburgerIcon />
       </button>
     </div>
   );

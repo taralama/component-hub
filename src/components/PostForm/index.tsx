@@ -6,9 +6,9 @@ import Input from '../Input';
 const SendData = () => {
   const { mutate } = useMutation<unknown, Error, postData>({
     mutationFn: (data: postData) => postServices.postData(data),
-    onSuccess: (res) => {
-      console.log(res);
-    },
+    // onSuccess: (res) => {
+    //   console.log(res);
+    // },
   });
 
   const { handleSubmit, register, control } = useForm<
@@ -24,12 +24,12 @@ const SendData = () => {
   });
 
   const handlePost = (data: postData & { isChecked: boolean }) => {
-    console.log(data);
+    // console.log(data);
     mutate(data);
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center ">
       <form
         onSubmit={handleSubmit(handlePost)}
         className="border w-100 py-10 px-5 shadow-2xl border-none"
