@@ -28,7 +28,7 @@ const Optimistic = () => {
   const getSkill = async () => {
     // getting Skills from backend
     try {
-      const response = await fetch('http://localhost:8383/users');
+      const response = await fetch('http://localhost:8383/user');
       const data = await response.json();
       setSkills(data.users);
     } catch (error) {

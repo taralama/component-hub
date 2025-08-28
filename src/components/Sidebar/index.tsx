@@ -43,6 +43,22 @@ const Sidebar = ({
       label: 'Hooks Example',
       link: '/hooks',
     },
+    {
+      label: 'Events',
+      link: '/events',
+    },
+    {
+      label: 'useReducer',
+      link: '/useReducer',
+    },
+    {
+      label: 'word compare',
+      link: '/wordCompare',
+    },
+    {
+      label: 'word compare',
+      link: '/wordCompare',
+    },
   ];
 
   const [componentSearchName, setComponentSearchName] = useState('');
@@ -54,7 +70,7 @@ const Sidebar = ({
 
   return (
     <div
-      className={`bg-blue-500 border-none h-screen overflow-hidden transition-all duration-500`}
+      className={`bg-blue-400  border-none h-screen shadow-2xl shadow-neutral-500 overflow-hidden transition-all duration-500`}
       style={{
         width: open ? '300px' : '0px', // Controls sidebar width
       }}
@@ -69,12 +85,12 @@ const Sidebar = ({
           </button>
         </span>
 
-        <h1 className="w-full font-bold py-2 text-center text px-10">
+        <h1 className="w-full font-bold text-center text px-10">
           Navbar Content
         </h1>
         <input
           type="text"
-          className=" bg-white rounded "
+          className=" bg-white rounded p-2"
           placeholder="Search Components"
           onChange={(e) => setComponentSearchName(e.target.value)}
         />
