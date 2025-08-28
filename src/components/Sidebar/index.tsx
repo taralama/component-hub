@@ -47,6 +47,18 @@ const Sidebar = ({
       label: 'Events',
       link: '/events',
     },
+    {
+      label: 'useReducer',
+      link: '/useReducer',
+    },
+    {
+      label: 'word compare',
+      link: '/wordCompare',
+    },
+    {
+      label: 'word compare',
+      link: '/wordCompare',
+    },
   ];
 
   const [componentSearchName, setComponentSearchName] = useState('');
