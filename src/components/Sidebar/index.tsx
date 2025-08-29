@@ -10,7 +10,7 @@ const Sidebar = ({
 }) => {
   // console.log(open);
 
-  const componentsList = [
+  const componentsList: { label: string; link: string }[] = [
     {
       label: 'Accordion',
       link: '/accordion',
@@ -59,6 +59,10 @@ const Sidebar = ({
       label: 'word compare',
       link: '/wordCompare',
     },
+    {
+      label: 'Todo',
+      link: '/todo',
+    },
   ];
 
   const [componentSearchName, setComponentSearchName] = useState('');
@@ -97,7 +101,7 @@ const Sidebar = ({
 
         <ul className="mt-5">
           {filteredComponent.map(({ label, link }, index) => (
-            <li key={label} className=" text-nowrap py-2">
+            <li key={index} className=" text-nowrap py-2">
               <Link className="hover:underline" to={link}>
                 {index + 1}. {label}
               </Link>
