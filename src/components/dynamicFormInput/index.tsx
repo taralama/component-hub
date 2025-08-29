@@ -54,7 +54,7 @@ const DynamicFormInput = () => {
         remove Picture
       </button>
       {fields.map((field, index) => (
-        <div key={field.id}>
+        <div key={index}>
           <label htmlFor={field.id}>Degree</label>
           <input
             className={'border block rounded border-blue-500'}

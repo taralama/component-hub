@@ -8,6 +8,7 @@ import Hooks from '../components/hooks';
 import OldWordCompare from '../components/useRef';
 import InputTypes from '../Pages/InputTypes';
 import StateMangers from '../Pages/Reducer';
+import { Todo } from '../Pages';
 
 const Routers = () => {
   return (
@@ -21,6 +22,7 @@ const Routers = () => {
         <Route path="/wordCompare" element={<OldWordCompare />} />
         <Route path="/input" element={<InputTypes />} />
         <Route path="/useReducer" element={<StateMangers />} />
+        <Route path="/todo" element={<Todo />} />
         <Route path="*" element={<h1>not found</h1>} />
       </Route>
     </Routes>
