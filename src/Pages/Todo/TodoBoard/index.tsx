@@ -6,6 +6,7 @@ import TaskCard from '../TaskCard';
 
 const Board = ({ title, tasks, setActiveCard, onDrop }: BoardProps) => {
   const [onDragStart, setOnDargStart] = useState(false);
+  const [showDropInBoard, setShowDropInBoard] = useState(false);
 
   const filterTasks = tasks?.filter((task) => {
     return task.status === title;
@@ -13,14 +14,27 @@ const Board = ({ title, tasks, setActiveCard, onDrop }: BoardProps) => {
 
   return (
     <div
+      onDragEnter={() => setShowDropInBoard(true)}
+      onDragLeave={() => setShowDropInBoard(false)}
+      onDrop={() => {
+        console.log('dropped');
+        setShowDropInBoard(false);
+        return onDrop(title, 0);
+      }}
       onDragOver={(e) => e.preventDefault()}
       onDrag={(e) => {
         e.preventDefault();
       }}
-      className="shadow-lg rounded-xl overflow-hidden h-96 w-full bg-white "
+      className={classNames(
+        'shadow-lg rounded-xl overflow-hidden h-96 w-full',
+        {
+          'bg-gray-200': showDropInBoard,
+          'bg-white': !showDropInBoard,
+        },
+      )}
     >
       <h1
-        className={classNames('text-center text-xl py-2  text-white ', {
+        className={classNames('text-center text-xl py-2 px-2 text-white ', {
           'bg-gray-800': title == 'Todo',
           'bg-green-400': title == 'In Progress',
           'bg-amber-400': title == 'Review',
@@ -30,7 +44,7 @@ const Board = ({ title, tasks, setActiveCard, onDrop }: BoardProps) => {
         {title}
       </h1>
 
-      <div className=" p-2">
+      <div className="px-2">
         <DropArea onDrop={() => onDrop(title, 0)} />
         {filterTasks?.map((task, index) => (
           <>
@@ -44,6 +58,10 @@ const Board = ({ title, tasks, setActiveCard, onDrop }: BoardProps) => {
             <DropArea onDrop={() => onDrop(title, index + 1)} />
           </>
         ))}
+
+        {showDropInBoard && (
+          <div className="h-full border-dotted text-center">Drop Here</div>
+        )}
       </div>
     </div>
   );
