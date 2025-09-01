@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BarGraph, Button, InputField } from '../../components';
+import { BarGraph, Button, FileDropDown, InputField } from '../../components';
 import Board from './TodoBoard';
 import { Status, status, TaskProps } from './type';
 
@@ -167,6 +167,8 @@ const Todo = () => {
           title="Completed"
         />
       </div>
+
+      <FileDropDown />
     </main>
   );
 };

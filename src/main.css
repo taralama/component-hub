@@ -74,6 +74,7 @@ input:checked + .slider:before {
   margin-block: 5px;
   opacity: 1;
   transition: all 0.2s ease-in-out;
+  height: 100%;
 }
 
 .hide_drop {
