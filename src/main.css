@@ -82,3 +82,18 @@ input:checked + .slider:before {
   margin-bottom: 0px;
   opacity: 0;
 }
+
+.whiteTitle {
+  color: white;
+  background-color: rgb(56, 56, 56);
+}
+
+.whiteTitle.darkTitle {
+  background-color: white;
+  color: rgb(56, 56, 56);
+}
+
+.dark {
+  color: white;
+  background-color: rgb(56, 56, 56);
+}

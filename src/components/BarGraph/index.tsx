@@ -40,17 +40,19 @@ const BarGraph = ({ tasks, latestUpdated }: BarGraphProps) => {
 
         <div className="flex-1">
           <h1 className="font-bold underline">latest Change</h1>
-          <div className="mt-5 grid grid-cols-3 gap-2">
+          <div className="mt-5 grid  gap-2">
             {latestUpdated?.length &&
-              latestUpdated?.map((item) => (
-                <div className=" border-[#EEEEEE] shadow-lg px-5 py-3 rounded">
-                  <div className="flex gap-2 ">
+              latestUpdated.reverse()?.map((item) => (
+                <div className=" bg-[#EEEEEE] shadow-lg px-5 py-3 rounded">
+                  {/* <div className="flex gap-2 ">
                     <p>{item.id}</p>
                     <p className="font-bold">{item.title}</p>
                   </div>
                   <ul className="px-4">
                     <li className="list-disc">{item.description}</li>
-                  </ul>
+                  </ul> */}
+
+                  <p className=" ">{`Card ${item.id} is transferred to ${item.status}  `}</p>
                 </div>
               ))}
           </div>

@@ -133,7 +133,7 @@ const Todo = () => {
           onClick={handleSubmit}
           type="submit"
           btnText="Add"
-          variant="primary"
+          variant="normal"
         />
       </div>
 

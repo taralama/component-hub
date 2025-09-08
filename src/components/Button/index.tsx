@@ -1,5 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
+
 import { ButtonProps } from '../../Pages/Todo/type';
 
 const Button = ({
@@ -15,7 +16,6 @@ const Button = ({
         {
           'bg-blue-600 text-white': variant == 'primary',
           'border text-blue-500': variant == 'outline',
-          '': variant == 'normal',
         },
         rest.className,
       )}
