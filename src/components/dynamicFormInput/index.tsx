@@ -29,7 +29,6 @@ const DynamicFormInput = () => {
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]; // Get the selected file
     if (file) {
-      console.log(file);
       const imageUrl = URL.createObjectURL(file); // Create preview URL
       console.log(imageUrl);
       setPreview(imageUrl);
