@@ -16,6 +16,7 @@ const Button = ({
         {
           'bg-blue-600 text-white': variant == 'primary',
           'border text-blue-500': variant == 'outline',
+          'bg-green-700 text-white': variant == 'green',
         },
         rest.className,
       )}

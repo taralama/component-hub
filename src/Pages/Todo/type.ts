@@ -16,7 +16,12 @@ export interface BoardProps {
   onDrop: (status: Status, position: number) => void;
 }
 
-export type BtnVariant = 'primary' | 'secondary' | 'outline' | 'normal';
+export type BtnVariant =
+  | 'primary'
+  | 'secondary'
+  | 'outline'
+  | 'normal'
+  | 'green';
 
 export interface ButtonProps {
   btnText: string;

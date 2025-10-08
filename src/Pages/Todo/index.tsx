@@ -38,8 +38,6 @@ const TASKS: TaskProps[] = [
 
 const SELECT_OPTIONS = ['Select Status', ...status];
 
-console.log(SELECT_OPTIONS);
-
 const Todo = () => {
   const [tasks, setTasks] = useState(TASKS);
   const [activeCard, setActiveCard] = useState<number | null>(null);
