@@ -1,5 +1,6 @@
 import React, { SetStateAction, useState } from 'react';
 import { Link } from 'react-router-dom';
+import InputField from '../InputField';
 
 const Sidebar = ({
   open,
@@ -56,8 +57,8 @@ const Sidebar = ({
       link: '/wordCompare',
     },
     {
-      label: 'word compare',
-      link: '/wordCompare',
+      label: 'Use Activity',
+      link: '/useActivity',
     },
     {
       label: 'Todo',
@@ -76,7 +77,7 @@ const Sidebar = ({
     <div
       className={`bg-blue-400  border-none h-screen shadow-2xl shadow-neutral-500 overflow-hidden transition-all duration-500`}
       style={{
-        width: open ? '300px' : '0px', // Controls sidebar width
+        width: open ? '350px' : '0px', // Controls sidebar width
       }}
     >
       <div className=" w-full">
@@ -92,7 +93,7 @@ const Sidebar = ({
         <h1 className="w-full font-bold text-center text px-10">
           Navbar Content
         </h1>
-        <input
+        <InputField
           type="text"
           className=" bg-white rounded p-2"
           placeholder="Search Components"

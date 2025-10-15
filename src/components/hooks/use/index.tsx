@@ -1,4 +1,4 @@
-import React, { Suspense, use } from 'react';
+import { Suspense, use } from 'react';
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));

@@ -14,7 +14,7 @@ export interface InputFieldProps<T extends FieldValues, U extends FieldPath<T>>
   label?: string;
   isLoading?: boolean;
   className: string;
-  withBorder?: boolean;e
+  withBorder?: boolean;
 }
 
 const Input = <T extends FieldValues, U extends FieldPath<T>>({

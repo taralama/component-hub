@@ -9,6 +9,7 @@ import InputTypes from '../Pages/InputTypes';
 import StateMangers from '../Pages/Reducer';
 import { Todo } from '../Pages';
 import DarkMode from '../Pages/DarkMode';
+import UseActivity from '../components/ActivityUse';
 
 const Routers = () => {
   return (
@@ -21,6 +22,7 @@ const Routers = () => {
         <Route path="/dark-mode" element={<DarkMode />} />
         <Route path="/wordCompare" element={<OldWordCompare />} />
         <Route path="/input" element={<InputTypes />} />
+        <Route path="/useActivity" element={<UseActivity />} />
         <Route path="/useReducer" element={<StateMangers />} />
         <Route path="/todo" element={<Todo />} />
         <Route path="*" element={<h1>not found</h1>} />
