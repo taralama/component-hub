@@ -10,13 +10,13 @@ const Effect = () => {
 
   const color = 'red';
 
-  const notification = useEffectEvent(() => {
+  const notification = useEffectEvent((color: string) => {
     console.log(color);
   });
 
   useEffect(() => {
     console.log('Effect, count:', count);
-    notification();
+    notification(color);
     return () => console.log('Cleanup, count:', count.clearUp + 1);
   }, [count]);
 

@@ -7,9 +7,10 @@ import Hooks from '../components/hooks';
 import OldWordCompare from '../components/useRef';
 import InputTypes from '../Pages/InputTypes';
 import StateMangers from '../Pages/Reducer';
-import { Todo } from '../Pages';
+import { MapPage, Todo } from '../Pages';
 import DarkMode from '../Pages/DarkMode';
 import UseActivity from '../components/ActivityUse';
+import Chat from '../Pages/ChatRoom';
 
 const Routers = () => {
   return (
@@ -25,6 +26,8 @@ const Routers = () => {
         <Route path="/useActivity" element={<UseActivity />} />
         <Route path="/useReducer" element={<StateMangers />} />
         <Route path="/todo" element={<Todo />} />
+        <Route path="/maps" element={<MapPage />} />
+        <Route path="/chatroom" element={<Chat />} />
         <Route path="*" element={<h1>not found</h1>} />
       </Route>
     </Routes>

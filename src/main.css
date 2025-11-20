@@ -97,3 +97,48 @@ input:checked + .slider:before {
   color: white;
   background-color: rgb(56, 56, 56);
 }
+
+.clicked:active {
+  background-color: rgb(131, 80, 80);
+  transform: scale(1.1);
+  transition: all 0.2s;
+}
+
+.my-location {
+  /* content: ''; */
+  height: 1rem;
+  width: 1rem;
+  background-color: #0d53ff;
+  color: green;
+  border-radius: 100%;
+  animation: location infinite 2s ease-in-out;
+}
+/* 
+@keyframes location {
+  0% {
+    background-color: #0d53ff;
+
+    transform: scale(1);
+  }
+
+  100% {
+    background-color: #2196f3;
+    transform: scale(1.5);
+  }
+} */
+
+@keyframes location {
+  0% {
+    border: 1px solid #0d53ff;
+    transform: scale(1);
+  }
+
+  50% {
+    border: solid rgba(82, 131, 255, 0.3);
+    transform: scale(2);
+  }
+  100% {
+    border: 1px solid #0d53ff;
+    transform: scale(1);
+  }
+}

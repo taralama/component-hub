@@ -5,3 +5,5 @@ export { default as BarGraph } from './BarGraph/index';
 export { default as InputField } from './InputField/index';
 export { default as FileDropDown } from './FileDropDown/index';
 export { default as UseEffectEvent } from './useEffectEvent';
+export { default as MapComp } from './MapComp';
+export { default as Socket } from './hooks/Socket';

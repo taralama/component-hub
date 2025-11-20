@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState } from 'react';
+import React, { SetStateAction, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import InputField from '../InputField';
 
@@ -64,13 +64,25 @@ const Sidebar = ({
       label: 'Todo',
       link: '/todo',
     },
+    {
+      label: 'Map',
+      link: '/maps',
+    },
+    {
+      label: 'Chat',
+      link: '/chatroom',
+    },
   ];
 
   const [componentSearchName, setComponentSearchName] = useState('');
   // console.log(componentSearchName)
 
-  const filteredComponent = componentsList.filter(({ label }) =>
-    label.toLowerCase().includes(componentSearchName),
+  const filteredComponent = useMemo(
+    () =>
+      componentsList.filter(({ label }) =>
+        label.toLowerCase().includes(componentSearchName),
+      ),
+    [componentSearchName],
   );
 
   return (
