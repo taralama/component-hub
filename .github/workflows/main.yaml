@@ -1,13 +1,43 @@
-name: CI
+name: SonarCloud analysis
 
 on:
   push:
-    branches:
-      - main
+    branches: ['main']
   pull_request:
-    branches:
-      - main
+    branches: ['main']
+  workflow_dispatch:
+
+permissions:
+  pull-requests: read # Allows SonarCloud to decorate PRs
 
 jobs:
-  run-sonar:
-    uses: ./.github/workflows/sonar.yaml # Calls your sonar workflow
+  sonar-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18 # or your Node version
+
+      - name: Install dependencies
+        run: |
+          if [ -f pnpm-lock.yaml ]; then
+            npm install -g pnpm && pnpm install
+          else
+            npm install
+          fi
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2.2.1
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=taralama_component-hub
+            -Dsonar.organization=tarahero
+            -Dsonar.sources=.
+          projectBaseDir: .
