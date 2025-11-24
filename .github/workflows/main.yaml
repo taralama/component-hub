@@ -7,34 +7,41 @@ on:
   pull_request:
     branches:
       - '**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
 
 jobs:
-  DemoSonarCloudScan:
+  sonarcloud:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout code
-      - uses: actions/checkout@v4
+      # Step 1: Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # Setup Node
+      # Step 2: Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: print node version
+      - name: Print Node version
         run: node -v
 
-      # Install pnpm & dependencies
-      - name: Enable Corepack & Install Dependencies
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
-          pnpm install
+      # Step 3: Enable Corepack & Install pnpm dependencies with cache
+      - name: Install Dependencies
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - name: Install project dependencies
+        run: pnpm install --frozen-lockfile
 
-      # Run SonarCloud Scan
+      # Step 4: Run SonarCloud Scan
       - name: Run SonarCloud Scan
         uses: sonarsource/sonarqube-scan-action@v2
         with:
@@ -44,3 +51,4 @@ jobs:
             -Dsonar.organization=tarahero
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -X  # Enable debug logging
