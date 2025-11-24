@@ -34,16 +34,19 @@ jobs:
         run: node -v
 
       # Step 3: Enable Corepack & Install pnpm dependencies with cache
-      - name: Install Dependencies
+      - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: latest
-      - name: Install project dependencies
+
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       # Step 4: Run SonarCloud Scan
       - name: Run SonarCloud Scan
         uses: sonarsource/sonarqube-scan-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           projectBaseDir: .
           args: >
@@ -51,4 +54,4 @@ jobs:
             -Dsonar.organization=tarahero
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-            -X  # Enable debug logging
+            -X
