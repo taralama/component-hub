@@ -1,0 +1,11 @@
+stages:
+  - test
+
+sonarqube-check:
+  stage: test
+  script:
+    - pnpm install
+    - sonar-scanner
+  only:
+    - merge_requests
+    - branches
