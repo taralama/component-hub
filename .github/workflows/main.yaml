@@ -1,46 +1,13 @@
-name: SonarCloud Scan
+name: CI
 
 on:
   push:
     branches:
-      - '**'
+      - main
   pull_request:
     branches:
-      - '**'
+      - main
 
 jobs:
-  DemoSonarCloudScan:
-    runs-on: ubuntu-latest
-
-    steps:
-      # Checkout code
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      # Setup Node
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: print node version
-        run: node -v
-
-      # Install pnpm & dependencies
-      - name: Enable Corepack & Install Dependencies
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
-          pnpm install
-
-      # Run SonarCloud Scan
-      - name: Run SonarCloud Scan
-        uses: sonarsource/sonarqube-scan-action@v2
-        with:
-          projectBaseDir: .
-          args: >
-            -Dsonar.projectKey=taralama_component-hub
-            -Dsonar.organization=tarahero
-            -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+  run-sonar:
+    uses: ./.github/workflows/sonar.yaml # Calls your sonar workflow
