@@ -1,0 +1,44 @@
+name: SonarCloud Scan
+
+on:
+  push:
+    branches:
+      - '**' # runs on all branches
+  pull_request:
+    branches:
+      - '**' # runs on all PRs
+
+jobs:
+  sonar:
+    name: SonarCloud Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Step 2: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+
+      # Step 3: Install pnpm & dependencies
+      - name: Install pnpm & dependencies
+        run: |
+          npm install -g pnpm
+          pnpm install
+
+      # Step 4: Run SonarCloud scan
+      - name: Run SonarCloud Scan
+        uses: sonarsource/sonarqube-scan-action@v2
+        with:
+          projectBaseDir: .
+          args: >
+            -Dsonar.projectKey=taralama_component-hub
+            -Dsonar.organization=tarahero
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
