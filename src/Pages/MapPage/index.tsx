@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, MapComp } from '../../components';
 import { useGetLocation } from '../../components/GetLocation';
 
