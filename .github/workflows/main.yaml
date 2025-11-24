@@ -1,43 +1,46 @@
-name: SonarCloud analysis
+name: SonarCloud Scan
 
 on:
   push:
-    branches: ['main']
+    branches:
+      - '**'
   pull_request:
-    branches: ['main']
-  workflow_dispatch:
-
-permissions:
-  pull-requests: read # Allows SonarCloud to decorate PRs
+    branches:
+      - '**'
 
 jobs:
-  sonar-analysis:
+  DemoSonarCloudScan:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      # Checkout code
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Set up Node.js
+      # Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18 # or your Node version
+          node-version: 18
 
-      - name: Install dependencies
+      - name: print node version
+        run: node -v
+
+      # Install pnpm & dependencies
+      - name: Enable Corepack & Install Dependencies
         run: |
-          if [ -f pnpm-lock.yaml ]; then
-            npm install -g pnpm && pnpm install
-          else
-            npm install
-          fi
+          corepack enable
+          corepack prepare pnpm@latest --activate
+          pnpm install
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v2.2.1
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      # Run SonarCloud Scan
+      - name: Run SonarCloud Scan
+        uses: sonarsource/sonarqube-scan-action@v2
         with:
+          projectBaseDir: .
           args: >
             -Dsonar.projectKey=taralama_component-hub
             -Dsonar.organization=tarahero
-            -Dsonar.sources=.
-          projectBaseDir: .
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
