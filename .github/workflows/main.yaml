@@ -29,7 +29,8 @@ jobs:
       # Step 3: Install pnpm & dependencies
       - name: Install pnpm & dependencies
         run: |
-          npm install -g pnpm
+          corepack enable
+          corepack prepare pnpm @latest --activate
           pnpm install
 
       # Step 4: Run SonarCloud scan
